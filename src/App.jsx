@@ -190,7 +190,7 @@ export default class App extends React.Component {
             return <div>Loading data from Clubhouse</div>;
         } else {
             return (
-                <div style='background-color: lightgray'>
+                <div>
                     {Array.from(data.keys()).map((workflow) => this.renderWorkflow(workflow))}
                 </div>
             )
