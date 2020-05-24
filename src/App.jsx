@@ -6,13 +6,6 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Clubhouse from "clubhouse-lib";
 
 const DEFAULT_QUERY = 'is:started'
@@ -140,12 +133,13 @@ export default class App extends React.Component {
         // Showing the right-most states first
         states.sort((a, b) => b.position - a.position);
         let renderOwner = (story) => {
-            if(story.owner_ids.length === 0) return '';
+            if (story.owner_ids.length === 0) return '';
             return '[' + story.owner_ids.map((member_id) => this.state.memberById[member_id]).join(', ') + '] ';
         }
         return states.map((state) => (
             <div>
-            <span className='quip-text-h3'>{workflow.name}: {state.name}</span>
+                <span
+                    className='quip-text-h3'>{workflow.name}: {state.name}</span>
                 <ul>
                     {storiesByState.get(state).map((story) => (
                         <li>{renderOwner(story)}{story.name}</li>
